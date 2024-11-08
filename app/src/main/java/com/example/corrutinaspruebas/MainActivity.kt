@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
 }
 
 
-// Función suspendida que simula una tarea larga (por ejemplo, una espera de 5 segundos)
+// Función suspendida que simula un viaje (espera de 5 segundos)
 suspend fun hacerViaje(): String {
     delay(5000) // Simula la espera
     return "Felicidades llegaste a la luna"
