@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
 
-            val resultado = remember { mutableStateOf("Esperando...") }
+            val viaje = remember { mutableStateOf("Esperando para subir al cohete...") }
             val coroutineScope = rememberCoroutineScope()
 
             // Interfaz
@@ -44,16 +44,16 @@ class MainActivity : ComponentActivity() {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
-                    Text(text = "Estado de la tarea: ${resultado.value}")
+                    Text(text = "Estado del viaje: ${viaje.value}")
                     Spacer(modifier = Modifier.height(16.dp))
                     Button(onClick = {
                         // Lanzamos la corutina dentro de un composable
-                        // y actualizamos el estado de resultado cuando termine la tarea
+                        // y actualizamos el estado de viaje
                         coroutineScope.launch {
-                            resultado.value = hacerTarea()
+                            viaje.value = hacerViaje()
                         }
                     }) {
-                        Text(text = "Iniciar tarea")
+                        Text(text = "Iniciar viaje")
                     }
                 }
             }
@@ -63,7 +63,7 @@ class MainActivity : ComponentActivity() {
 
 
 // Función suspendida que simula una tarea larga (por ejemplo, una espera de 5 segundos)
-suspend fun hacerTarea(): String {
+suspend fun hacerViaje(): String {
     delay(5000) // Simula la espera
-    return "Tarea terminada"
+    return "Felicidades llegaste a la luna"
 }
